@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="notificationTitle">Westeros Bank</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="westeros_gray_logo">Westeros Gray Logo</string>
+
+    <string name="ContinueButton">Continue</string>
+    <string name="user_segment">44959</string>
+    <string name="webcontent_normal">53031</string>
+    <string name="webcontent_usersegment">53019</string>
+    <string name="mainPosition">55099</string>
+
+    <integer name="ddl_recordset_id_survey">51276</integer>
+    <integer name="ddl_structure_id_survey">51272</integer>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Change these values for your Liferay Portal installation -->
+
+    <string name="liferay_server">http://10.0.2.2:8080</string>
+    <integer name="liferay_portal_version">70</integer>
+    <integer name="liferay_company_id">20116</integer>
+    <integer name="liferay_group_id">36849</integer>
+
+    <string name="anonymous_user">anonymous1@liferay.com</string>
+    <string name="anonymous_password">anonymous1</string>
+
+    <string name="default_user">push@liferay.com</string>
+    <string name="default_password">push</string>
+
+    <string name="sender_id">694095365542</string>
+
+</resources>
