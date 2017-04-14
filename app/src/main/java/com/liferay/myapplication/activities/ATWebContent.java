@@ -16,28 +16,25 @@ import com.liferay.myapplication.R;
 import com.liferay.myapplication.mobileSDK.GetUserSegment;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ATWebContent extends AppCompatActivity implements View.OnClickListener {
 
-    WebContentDisplayScreenlet webcontent;
-    Button buttonContinue;
+    private WebContentDisplayScreenlet webcontent;
 
-    private Button _continueButton;
-
-    @Override
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atweb_content);
 
-        _continueButton = (Button) findViewById(R.id.continue_button);
-        _continueButton.setOnClickListener(this);
+		Button continueButton = (Button) findViewById(R.id.continue_button);
+        continueButton.setOnClickListener(this);
 
         Session session = SessionContext.createSessionFromCurrentSession();
         User user = SessionContext.getCurrentUser();
         GetUserSegment service = new GetUserSegment(session);
         final boolean userSegmentActive=true;
+
         session.setCallback(new JSONArrayCallback() {
             @Override
             public void onFailure(Exception exception) {
@@ -46,42 +43,42 @@ public class ATWebContent extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onSuccess(JSONArray result) {
-                String userSegmentId=getString(R.string.user_segment);
-                String articulo = calculoArticulo(result,userSegmentId);
+                String userSegmentId = getString(R.string.user_segment);
+                String articulo = calculoArticulo(result, userSegmentId);
                 webcontent = (WebContentDisplayScreenlet) findViewById(R.id.web_atarticle);
                 webcontent.setArticleId(articulo);
                 webcontent.load();
             }
-            private String calculoArticulo(JSONArray result,String userSegmentId) {
-                Boolean resultado = false;
-                String articulo = "";
+            
+            private String calculoArticulo(JSONArray result, String userSegmentId) {
+                Boolean belongsToSegment = false;
+                String article = "";
                 try {
                     if (result != null) {
-                        String segmento = "";
+                        String segment = "";
                         for (int i = 0; i < result.length(); i++) {
                             JSONObject jsonObject = result.getJSONObject(i);
-                            segmento = jsonObject.getString("userSegmentId").toString();
-                            if (segmento.equals(userSegmentId)) {
-                                resultado = true;
+                            segment = jsonObject.getString("userSegmentId");
+                            if (segment.equals(userSegmentId)) {
+                                belongsToSegment = true;
                             }
                         }
                     }
 
-                    if (resultado) {
-                        articulo = getString(R.string.webcontent_usersegment);
+                    if (belongsToSegment) {
+                        article = getString(R.string.webcontent_usersegment);
                     } else {
-                        articulo = getString(R.string.webcontent_normal);
+                        article = getString(R.string.webcontent_normal);
                     }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                return articulo;
+                return article;
             }});
 
         try {
             service.getUserSegments(user.getId(), userSegmentActive);
-        } catch (JSONException e) {
-            e.printStackTrace();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -89,7 +86,7 @@ public class ATWebContent extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (webcontent.getArticleId()==getString(R.string.webcontent_usersegment)) {
+        if (getString(R.string.webcontent_usersegment).equals(webcontent.getArticleId())) {
             startActivity(new Intent(this, SurveyActivity.class));
         }else{
             startActivity(new Intent(this, MainActivity.class));
