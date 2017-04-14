@@ -1,9 +1,6 @@
 package com.liferay.myapplication.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.liferay.mobile.android.service.Session;
@@ -12,11 +9,11 @@ import com.liferay.mobile.screens.auth.login.LoginScreenlet;
 import com.liferay.mobile.screens.context.User;
 import com.liferay.mobile.screens.util.LiferayLogger;
 import com.liferay.myapplication.R;
-import com.liferay.myapplication.activities.MainActivity;
 
+import com.liferay.myapplication.notification.SnackbarUtil;
 import org.json.JSONObject;
 
-public class LoginActivity extends PushScreensActivity implements LoginListener{
+public class LoginActivity extends PushScreensActivity implements LoginListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +31,7 @@ public class LoginActivity extends PushScreensActivity implements LoginListener{
 
     @Override
     public void onLoginFailure(Exception e) {
-        Snackbar.make(findViewById(android.R.id.content), "Login Failed", Snackbar.LENGTH_LONG)
-                .setActionTextColor(Color.RED)
-                .show();
+        SnackbarUtil.showMessage(this, "Login Failed");
     }
 
     @Override
