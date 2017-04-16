@@ -16,7 +16,7 @@ import com.liferay.myapplication.activities.MainActivity;
 
 import org.json.JSONObject;
 
-public class LoginActivity extends PushScreensActivity implements LoginListener{
+public class LoginActivity extends AppCompatActivity implements LoginListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,23 +39,5 @@ public class LoginActivity extends PushScreensActivity implements LoginListener{
                 .show();
     }
 
-    @Override
-    protected Session getDefaultSession() {
-        return null;
-    }
 
-    @Override
-    protected void onPushNotificationReceived(JSONObject jsonObject) {
-
-    }
-
-    @Override
-    protected void onErrorRegisteringPush(String message, Exception e) {
-        LiferayLogger.e(e.getMessage());
-    }
-
-    @Override
-    protected String getSenderId() {
-        return getString(R.string.sender_id);
-    }
 }

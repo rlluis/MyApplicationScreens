@@ -19,7 +19,7 @@ import com.liferay.myapplication.R;
 
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends PushScreensActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -101,5 +101,23 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    protected Session getDefaultSession() {
+        return null;
+    }
 
+    @Override
+    protected void onPushNotificationReceived(JSONObject jsonObject) {
+
+    }
+
+    @Override
+    protected void onErrorRegisteringPush(String message, Exception e) {
+        LiferayLogger.e(e.getMessage());
+    }
+
+    @Override
+    protected String getSenderId() {
+        return getString(R.string.sender_id);
+    }
 }
