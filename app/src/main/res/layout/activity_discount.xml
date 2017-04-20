@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:liferay="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.liferay.myapplication.activities.DiscountActivity">
+
+    <com.liferay.mobile.screens.dlfile.display.pdf.PdfDisplayScreenlet
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        liferay:className="com.liferay.document.library.kernel.model.DLFileEntry"
+        liferay:classPK="@integer/pdf_discount"
+        />
+
+
+
+</android.support.constraint.ConstraintLayout>

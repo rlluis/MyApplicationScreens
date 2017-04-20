@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         liferay:basicAuthMethod="screen_name"
         liferay:companyId="20116"
+        liferay:loginMode="cookie"
         />
 
 </LinearLayout>
